@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Homemate;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
