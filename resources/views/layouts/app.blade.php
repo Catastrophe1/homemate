@@ -28,8 +28,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <img src="{{ asset('images/homemate.png') }}"  style="width: 32px; hight: 32px; position: absolute; top: 8px; left: 28px">
-                    <a class="navbar-brand">
+                    <img src="{{ asset('images/homemate.png') }}"  style="width: 32px; height: 32px; position: absolute; top: 8px; left: 28px">
+                    <a class="navbar-brand" style="position: absolute; top: 1px; left: 75px">
                         {{ config('app.name', 'Homemate') }}
                     </a>
                 </div>
