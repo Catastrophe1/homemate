@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Image;
 use Homemate\UserProfile;
+use Homemate\UserInformation;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -15,8 +17,15 @@ class UserController extends Controller
         return UserProfile::where('user_id', '=', $user->id)->first();
     }
     
+    private function get_user_info() {
+        $user = Auth::user();
+        return UserInformation::where('user_id', '=', $user->id)->first();
+    }
+    
     public function profile() {
-        return view('profile', array('user' => Auth::user(), 'userProfile' => $this::get_user_profile()));
+        return view('profile', array('user' => Auth::user(), 
+            'userProfile' => $this::get_user_profile(),
+            'userInfo' => $this::get_user_info()));
     }
     
     public function update_avatar(Request $request) {
@@ -24,13 +33,18 @@ class UserController extends Controller
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar');
             $filename = time().'.'.$avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/'.$filename));
-            
+            Image::make($avatar)->resize(300, 300)->save('storage/avatars/'.$filename);
             $user = Auth::user();
+            $oldFilename = $user->avatar;
+            if($oldFilename != 'default.jpg'){
+                Storage::delete('/public/avatars/'.$oldFilename);
+            }
             $user->avatar = $filename;
             $user->save();
         }
-        return view('profile', array('user' => Auth::user(), 'userProfile' => $this::get_user_profile()));
+        return view('profile', array('user' => Auth::user(), 
+            'userProfile' => $this::get_user_profile(), 
+            'userInfo' => $this::get_user_info()));
     }
     
     public function update_profile(Request $request) {
@@ -57,8 +71,12 @@ class UserController extends Controller
             $userProfile->house_preference = $housePreference;
             $userProfile->save();
         }
-        
-        return view('profile', array('user' => Auth::user(), 'userProfile' =>  $this::get_user_profile()));
+        return view('profile', array('user' => Auth::user(), 
+            'userProfile' => $this::get_user_profile(), 
+            'userInfo' => $this::get_user_info()));
     }
     
+    public function update_info(Request $request) {
+        
+    }
 }

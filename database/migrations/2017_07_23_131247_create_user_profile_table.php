@@ -16,7 +16,7 @@ class CreateUserProfileTable extends Migration
         //
         Schema::create('user_profiles', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->unsignedInteger('user_id')->unique();
             $table->string('self_summary')->default('My job is... My living habit is...');
             $table->string('homemate_preference')->default('I want to find roommates who are...');
             $table->string('house_preference')->default('I want to find a house that is...');
