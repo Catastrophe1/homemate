@@ -22,9 +22,9 @@ class CreateUserInformationsTable extends Migration
                 '湖南', '湖北', '黑龙江', '辽宁', '山东', '广西', '贵州', '山西', '河南', 
                 '河北', '广东', '吉林', '云南', '西藏', '内蒙古', '青海', '新疆', '福建', 
                 '江苏', '江西', '陕西', '天津', '甘肃', '海南', '香港', '澳门', '台湾', 'from...'])->default('from...');
-            $table->string('phone_num')->default('add my phone number');
-            $table->string('wechat')->default('add my wechat ID');
-            $table->string('QQ')->default('add my QQ number');
+            $table->string('phone_num');
+            $table->string('wechat');
+            $table->string('QQ');
             $table->date('birthday');
             $table->timestamps();
         });

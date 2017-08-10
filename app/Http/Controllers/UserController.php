@@ -77,6 +77,26 @@ class UserController extends Controller
     }
     
     public function update_info(Request $request) {
-        
+        if($request->has('wechat')){
+            $wechat = $request->input('wechat');
+            $userInfo = $this::get_user_info();
+            $userInfo->wechat = $wechat;
+            $userInfo->save();
+        }
+        if($request->has('phone_num')){
+            $phone_num = $request->input('phone_num');
+            $userInfo = $this::get_user_info();
+            $userInfo->phone_num = $phone_num;
+            $userInfo->save();
+        }
+        if($request->has('QQ')){
+            $QQ = $request->input('QQ');
+            $userInfo = $this::get_user_info();
+            $userInfo->QQ = $QQ;
+            $userInfo->save();
+        }              
+        return view('profile', array('user' => Auth::user(), 
+            'userProfile' => $this::get_user_profile(), 
+            'userInfo' => $this::get_user_info()));
     }
 }

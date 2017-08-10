@@ -22,5 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('profile', 'UserController@profile');
 Route::post('profile/avatar', 'UserController@update_avatar');
 Route::post('profile', 'UserController@update_profile');
+Route::post('profile/info', 'UserController@update_info');
 
 Route::get('settings', 'SettingsController@settings');
