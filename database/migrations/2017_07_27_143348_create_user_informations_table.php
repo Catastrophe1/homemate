@@ -25,7 +25,9 @@ class CreateUserInformationsTable extends Migration
             $table->string('phone_num');
             $table->string('wechat');
             $table->string('QQ');
-            $table->date('birthday');
+            $table->string('birth_month');
+            $table->unsignedInteger('birth_day');
+            $table->unsignedInteger('birth_year');
             $table->timestamps();
         });
     }

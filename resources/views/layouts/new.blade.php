@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
 
@@ -111,3 +111,4 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
+

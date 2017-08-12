@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <h2>{{ $user->name }}</h2>
+            <h2>&nbsp{{ $user->name }}</h2>
             <ul class="list-inline">
                 <li><h3><small>
                 @if ($userInfo->gender == 1)

@@ -25,3 +25,4 @@ Route::post('profile', 'UserController@update_profile');
 Route::post('profile/info', 'UserController@update_info');
 
 Route::get('settings', 'SettingsController@settings');
+Route::post('settings', 'SettingsController@update_info');

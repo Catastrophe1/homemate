@@ -42,9 +42,7 @@ class UserController extends Controller
             $user->avatar = $filename;
             $user->save();
         }
-        return view('profile', array('user' => Auth::user(), 
-            'userProfile' => $this::get_user_profile(), 
-            'userInfo' => $this::get_user_info()));
+        return redirect('profile');
     }
     
     public function update_profile(Request $request) {
@@ -71,9 +69,7 @@ class UserController extends Controller
             $userProfile->house_preference = $housePreference;
             $userProfile->save();
         }
-        return view('profile', array('user' => Auth::user(), 
-            'userProfile' => $this::get_user_profile(), 
-            'userInfo' => $this::get_user_info()));
+        return redirect('profile');
     }
     
     public function update_info(Request $request) {
@@ -95,8 +91,6 @@ class UserController extends Controller
             $userInfo->QQ = $QQ;
             $userInfo->save();
         }              
-        return view('profile', array('user' => Auth::user(), 
-            'userProfile' => $this::get_user_profile(), 
-            'userInfo' => $this::get_user_info()));
+        return redirect('profile');
     }
 }
